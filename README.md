@@ -169,11 +169,3 @@ Our testing methodology includes:
 4. **Memory dump is very large**
    - This is normal for full system dumps
    - Consider using the `-m adb` method for smaller files
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues to improve the project.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
