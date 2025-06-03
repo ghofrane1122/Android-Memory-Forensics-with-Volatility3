@@ -191,8 +191,4 @@ A detailed PDF report summarizing the methodology, plugin behavior, observations
 * Ghofrane Barouni
 * Sanda Dhouib
 
----
 
-## 📜 License
-
-This project is for academic and research purposes only. If you use any part of this work, please credit the authors and cite the Volatility project accordingly.
