@@ -155,6 +155,30 @@ Adjust paths in `analyze_linux_plugins.py`, then run:
 ```bash
 python analyze_linux_plugins.py
 ```
+---
+
+### How the Plugin Analysis Script Works
+
+The `analyze_linux_plugins.py` script automates the execution of **all Linux plugins** available in Volatility 3 on your Android memory dump.
+
+Here’s what the script does:
+
+1.  **Loads the full list of Linux plugins** from Volatility 3.
+2.  **Sets paths** to your memory dump and symbol profile (generated using `btf2json`).
+3. **Creates an output directory** (`plugin_outputs`) to store results.
+4.  **Loops through each plugin** and runs it using:
+   ```bash
+   python vol.py -s <path_to_profile> -f <path_to_dump> <plugin_name>
+```
+Analyzes the output:
+Status:
+✅ OK – plugin worked and returned useful output
+⚠️ Possibly empty or unusable – plugin ran but returned very little
+❌ Failed: Requirement missing – plugin couldn’t run due to unresolved symbols or missing requirements
+📁 Saves each plugin’s output into a file under the plugin_outputs/ folder using a safe filename format, like:
+
+After running the script, you can explore all plugin results directly in the plugin_outputs/ folder — this is exactly how we manually analyzed each plugin during the project.
+This automation helped us test and document plugin compatibility one by one, and the data from this process fed directly into our final report.
 
 ---
 
