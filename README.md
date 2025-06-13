@@ -227,7 +227,7 @@ This automation helped us test and document plugin compatibility one by one, and
 
 ## Want to Try It Yourself?
 
-You’ll find everything you need in this [Google Drive folder] ([https://drive.google.com/drive/folders/1igTvN26OEXcU2gCMnaY_mSRzVTkO5KFl?usp=sharing].
+You’ll find everything you need in this link [https://drive.google.com/drive/folders/1igTvN26OEXcU2gCMnaY_mSRzVTkO5KFl?usp=sharing].
 
 It contains four folders:
 
