@@ -185,6 +185,16 @@ python analyze_linux_plugins.py
 
 > *Note: Some plugins executed successfully but returned limited data due to Android’s architecture. For example, `bash`, `malfind`, and `check_creds` may be of low value unless the device is rooted or uses traditional Linux shells.*
 
+---
+
+## Want to Try It Yourself?
+
+You’ll find everything you need in this [Google Drive folder](https://your-drive-link-here).
+
+It contains four folders:
+
+- **`volatility3`**, **`memory_dump`**, and **`btf2json-android`** — These are the exact working directories we used during the project. You can download them and directly run the analysis using the same commands we documented.
+- **`starter_pack`** — This folder includes only the essential files: our memory dump and the generated Volatility 3 profile. If you're looking for a quick start, just place these files into the appropriate directories as described at the beginning of this README and begin your Android memory forensics journey.
 
 
 ---
