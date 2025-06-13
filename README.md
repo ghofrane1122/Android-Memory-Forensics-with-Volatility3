@@ -50,7 +50,7 @@ adb pull /data/local/tmp/memory_on_disk.dump <your_path>/android_memory_dump.bin
 
 ---
 
-## 🔧 Step 2: Generate the Profile
+## Step 2: Generate the Profile
 
 ### 2.1 Clone the required `btf2json` tool
 
@@ -172,10 +172,10 @@ Here’s what the script does:
 ```
 Analyzes the output:
 Status:
-✅ OK – plugin worked and returned useful output
-⚠️ Possibly empty or unusable – plugin ran but returned very little
-❌ Failed: Requirement missing – plugin couldn’t run due to unresolved symbols or missing requirements
-📁 Saves each plugin’s output into a file under the plugin_outputs/ folder using a safe filename format, like:
+1. ✅ OK – plugin worked and returned useful output
+2. ⚠️ Possibly empty or unusable – plugin ran but returned very little
+3. ❌ Failed: Requirement missing – plugin couldn’t run due to unresolved symbols or missing requirements
+4. 📁 Saves each plugin’s output into a file under the plugin_outputs/ folder using a safe filename format, like:
 
 After running the script, you can explore all plugin results directly in the plugin_outputs/ folder — this is exactly how we manually analyzed each plugin during the project.
 This automation helped us test and document plugin compatibility one by one, and the data from this process fed directly into our final report.
