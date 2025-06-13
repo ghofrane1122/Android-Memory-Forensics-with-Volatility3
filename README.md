@@ -225,9 +225,10 @@ It contains four folders:
 ## Android Case Study
 
 **Real-world forensic investigation** of a sophisticated Android banking that evaded traditional mobile security tools. Demonstrates how memory forensics with Volatility 3 successfully detected and analyzed advanced threats.
-**File**: `android-banking-trojan-case-study.md`  
-**Focus**: Advanced Android malware detection using memory forensics  
-**Tools**: Volatility 3, LEMON memory acquisition, Linux forensics plugins
+
+- **File**: `android-banking-trojan-case-study.md`  
+- **Focus**: Advanced Android malware detection using memory forensics  
+- **Tools**: Volatility 3, LEMON memory acquisition, Linux forensics plugins
 
 
 ---
