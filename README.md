@@ -184,28 +184,43 @@ This automation helped us test and document plugin compatibility one by one, and
 
 ## ✅ Plugin Compatibility Table
 
-| Plugin                         | Status | Notes / Limitations |
-|--------------------------------|--------|----------------------|
-| `pslist`                       | ✅     | Fully functional; 65 processes detected |
-| `psscan`                       | ✅     | Detects hidden/terminated processes |
-| `proc_maps` (`proc.Maps`)      | ✅     | Rich virtual memory mapping data |
-| `bash`                         | ✅     | Minimal data; Android doesn’t use bash by default |
-| `check_modules` (`lsmod`)      | ✅     | 50+ Android-specific kernel modules detected |
-| `dmesg` (`kmsg`)               | ✅     | Extracts kernel messages (1,225 lines) |
-| `lsmod`                        | ✅     | See `check_modules` |
-| `lsof`                         | ✅     | Parsed file descriptors successfully |
-| `netstat` (`sockstat`)         | ✅     | Socket activity and network info shown |
-| `psaux`                        | ✅     | Process command-line arguments recovered |
-| `pstree`                       | ✅     | Android zygote hierarchy confirmed |
-| `tty_check` (`check_creds`)    | ✅     | Minimal data; basic credential structures present |
-| `vma_maps` (`proc.Maps`)       | ✅     | Memory regions per process mapped |
-| `fbdev`                        | ❌     | Failed – missing framebuffer symbol |
-| `boottime`                     | ❌     | Failed – missing `timekeeper` symbol |
-| `library_list`                 | ❌     | Timeout – possibly due to profile/symbol complexity |
-| `recoverfs`                    | ❌     | Failed – plugin type error |
-| `hidden_modules`               | ❌     | Failed – symbol format incompatibility |
-| `keyboard_notifiers`          | ❌     | Failed – structure not present in Android kernel |
-| `check_ftrace`                 | ✅     | Minimal output; symbol partially resolved |
+## 📊 Plugin Execution Summary
+
+| Plugin                                | Status       | Notes / Limitations                                      |
+|---------------------------------------|--------------|-----------------------------------------------------------|
+| `linux.pslist.PsList`                 | ✅ SUCCESS    | Lists all processes; crucial for malware analysis         |
+| `linux.pstree.PsTree`                 | ✅ SUCCESS    | Reveals Android zygote process hierarchy                  |
+| `linux.psaux.PsAux`                   | ✅ SUCCESS    | Shows full process command lines                          |
+| `linux.psscan.PsScan`                 | ✅ SUCCESS    | Recovers hidden/terminated processes                      |
+| `linux.sockstat.Sockstat`            | ✅ SUCCESS    | Lists active sockets and network stats                    |
+| `linux.lsof.Lsof`                     | ✅ SUCCESS    | Very large output; shows open files per process           |
+| `linux.mountinfo.MountInfo`           | ✅ SUCCESS    | Reveals filesystem structure and mounts                   |
+| `linux.graphics.fbdev.Fbdev`          | ❌ FAILED     | Android lacks framebuffer symbol                          |
+| `linux.pidhashtable.PIDHashTable`     | ✅ SUCCESS    | Maps kernel tasks to PIDs                                 |
+| `linux.ip.Addr`                       | ✅ SUCCESS    | Lists IP addresses of interfaces                          |
+| `linux.ip.Link`                       | ✅ SUCCESS    | Interface MACs, states, and types                         |
+| `linux.proc.Maps`                     | ✅ SUCCESS    | Virtual memory mappings per process                       |
+| `linux.elfs.Elfs`                     | ✅ SUCCESS    | Identifies loaded binaries and native libs                |
+| `linux.library_list.LibraryList`      | ❌ FAILED     | Extremely slow; symbol resolution issues                  |
+| `linux.envars.Envars`                 | ✅ SUCCESS    | Extracts environment variables                            |
+| `linux.lsmod.Lsmod`                   | ✅ SUCCESS    | Lists Android kernel modules                              |
+| `linux.kmsg.Kmsg`                     | ✅ SUCCESS    | Dumps kernel logs (dmesg buffer)                          |
+| `linux.capabilities.Capabilities`     | ✅ SUCCESS    | Lists Linux capabilities per process                      |
+| `linux.check_creds.Check_creds`       | ✅ SUCCESS    | Worked but limited output on Android                      |
+| `linux.check_syscall.Check_syscall`   | ✅ SUCCESS    | Verifies syscall table integrity                          |
+| `linux.malfind.Malfind`               | ✅ SUCCESS    | No injected regions found                                 |
+| `linux.keyboard_notifiers.Keyboard_notifiers` | ❌ FAILED | Kernel lacks notifier list                                |
+| `linux.pagecache.Files`               | ✅ SUCCESS    | Shows files loaded into memory                            |
+| `linux.pagecache.RecoverFs`           | ✅ SUCCESS    | Reconstructs filesystem from cached inodes                |
+| `linux.hidden_modules.Hidden_modules` | ❌ FAILED     | Incompatible symbol table format                          |
+| `linux.boottime.Boottime`             | ❌ FAILED     | `timekeeper` symbol missing                               |
+| `linux.check_idt.Check_idt`           | ✅ SUCCESS    | IDT entries for rootkit detection                         |
+| `linux.bash.Bash`                     | ✅ SUCCESS    | No Bash history found (Android doesn't use Bash)          |
+| `linux.pagecache.InodePages`          | ✅ SUCCESS    | Minimal inode data found                                  |
+| `linux.ebpf.EBPF`                     | ✅ SUCCESS    | Lists eBPF programs                                       |
+| `linux.tracing.ftrace.CheckFtrace`    | ❌ FAILED     | `ftrace_ops_list` missing from profile                    |
+| `linux.netfilter.Netfilter`           | ✅ SUCCESS    | Shows Netfilter/firewall hooks                            |
+
 
 > *Note: Some plugins executed successfully but returned limited data due to Android’s architecture. For example, `bash`, `malfind`, and `check_creds` may be of low value unless the device is rooted or uses traditional Linux shells.*
 
