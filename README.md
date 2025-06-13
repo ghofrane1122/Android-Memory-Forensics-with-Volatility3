@@ -4,7 +4,7 @@ This repository contains tools and documentation for testing Volatility3 Linux p
 
 ---
 
-## 📌 Prerequisites
+## Prerequisites
 
 - Rust (to build btf2json)
 - ADB installed and added to PATH
@@ -16,7 +16,7 @@ This repository contains tools and documentation for testing Volatility3 Linux p
 
 ---
 
-## 🧠 Step 1: Capture the Memory Dump with LEMON
+## Step 1: Capture the Memory Dump with LEMON
 
 ### 1.1 Push lemon.x86_64 binary
 
@@ -185,10 +185,5 @@ python test_all_plugins.py
 A detailed PDF report summarizing the methodology, plugin behavior, observations, and findings will be included in this repository.
 
 ---
-
-## 👤 Authors
-
-* Ghofrane Barouni
-* Sanda Dhouib
 
 
