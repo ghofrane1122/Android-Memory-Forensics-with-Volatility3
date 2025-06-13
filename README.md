@@ -220,6 +220,15 @@ It contains four folders:
 - **`volatility3`**, **`memory_dump`**, and **`btf2json-android`** — These are the exact working directories we used during the project. You can download them and directly run the analysis using the same commands we documented.
 - **`starter_pack`** — This folder includes only the essential files: our memory dump and the generated Volatility 3 profile. If you're looking for a quick start, just place these files into the appropriate directories as described at the beginning of this README and begin your Android memory forensics journey.
 
+---
+
+## Android Case Study
+
+**Real-world forensic investigation** of a sophisticated Android banking that evaded traditional mobile security tools. Demonstrates how memory forensics with Volatility 3 successfully detected and analyzed advanced threats.
+**File**: `android-banking-trojan-case-study.md`  
+**Focus**: Advanced Android malware detection using memory forensics  
+**Tools**: Volatility 3, LEMON memory acquisition, Linux forensics plugins
+
 
 ---
 
