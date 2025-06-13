@@ -170,7 +170,7 @@ Here’s what the script does:
    ```bash
    python vol.py -s <path_to_profile> -f <path_to_dump> <plugin_name>
 ```
-Analyzes the output:
+### Analyzes the output:
 Status:
 1. ✅ OK – plugin worked and returned useful output
 2. ⚠️ Possibly empty or unusable – plugin ran but returned very little
