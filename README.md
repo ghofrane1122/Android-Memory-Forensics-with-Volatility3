@@ -182,9 +182,8 @@ This automation helped us test and document plugin compatibility one by one, and
 
 ---
 
-## ✅ Plugin Compatibility Table
+## Plugin Compatibility Table
 
-## 📊 Plugin Execution Summary
 
 | Plugin                                | Status       | Notes / Limitations                                      |
 |---------------------------------------|--------------|-----------------------------------------------------------|
