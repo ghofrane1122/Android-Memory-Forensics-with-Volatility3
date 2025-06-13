@@ -131,9 +131,9 @@ git apply new-json-schema.patch
 
 ---
 
-## 🔍 Step 3: Analyze with Volatility 3
+##  Step 3: Analyze with Volatility 3
 
-### 3.1 Setup environment inside `volatility3`
+### 3.1 Setup environment inside `volatility3` (we should be in volatility3 folder)
 
 ```bash
 python -m venv venv
@@ -150,39 +150,48 @@ python vol.py -s path/to/profile_clean.json -f path/to/android_memory_dump.bin l
 
 ### 3.3 Run all plugins
 
-Adjust paths in `test_all_plugins.py`, then run:
+Adjust paths in `analyze_linux_plugins.py`, then run:
 
 ```bash
-python test_all_plugins.py
+python analyze_linux_plugins.py
 ```
 
 ---
 
 ## ✅ Plugin Compatibility Table
 
-| Plugin | Status | Notes / Limitations |
-|--------|--------|-------------------|
-| pslist | ✅ | |
-| psscan | ✅ | |
-| proc_maps | ✅ | |
-| bash | ❌ | |
-| check_modules | ✅ | |
-| dmesg | ✅ | |
-| lsmod | ✅ | |
-| lsof | ❌ | |
-| netstat | ❌ | |
-| psaux | ✅ | |
-| pstree | ✅ | |
-| tty_check | ❌ | |
-| vma_maps | ✅ | |
+| Plugin                         | Status | Notes / Limitations |
+|--------------------------------|--------|----------------------|
+| `pslist`                       | ✅     | Fully functional; 65 processes detected |
+| `psscan`                       | ✅     | Detects hidden/terminated processes |
+| `proc_maps` (`proc.Maps`)      | ✅     | Rich virtual memory mapping data |
+| `bash`                         | ✅     | Minimal data; Android doesn’t use bash by default |
+| `check_modules` (`lsmod`)      | ✅     | 50+ Android-specific kernel modules detected |
+| `dmesg` (`kmsg`)               | ✅     | Extracts kernel messages (1,225 lines) |
+| `lsmod`                        | ✅     | See `check_modules` |
+| `lsof`                         | ✅     | Parsed file descriptors successfully |
+| `netstat` (`sockstat`)         | ✅     | Socket activity and network info shown |
+| `psaux`                        | ✅     | Process command-line arguments recovered |
+| `pstree`                       | ✅     | Android zygote hierarchy confirmed |
+| `tty_check` (`check_creds`)    | ✅     | Minimal data; basic credential structures present |
+| `vma_maps` (`proc.Maps`)       | ✅     | Memory regions per process mapped |
+| `fbdev`                        | ❌     | Failed – missing framebuffer symbol |
+| `boottime`                     | ❌     | Failed – missing `timekeeper` symbol |
+| `library_list`                 | ❌     | Timeout – possibly due to profile/symbol complexity |
+| `recoverfs`                    | ❌     | Failed – plugin type error |
+| `hidden_modules`               | ❌     | Failed – symbol format incompatibility |
+| `keyboard_notifiers`          | ❌     | Failed – structure not present in Android kernel |
+| `check_ftrace`                 | ✅     | Minimal output; symbol partially resolved |
 
-*We will update this table with compatibility results after complete analysis.*
+> *Note: Some plugins executed successfully but returned limited data due to Android’s architecture. For example, `bash`, `malfind`, and `check_creds` may be of low value unless the device is rooted or uses traditional Linux shells.*
+
+
 
 ---
 
 ## 📄 Report
 
-A detailed PDF report summarizing the methodology, plugin behavior, observations, and findings will be included in this repository.
+A detailed PDF report summarizing the methodology, plugin behavior, observations, and findings is included in this repository.
 
 ---
 
